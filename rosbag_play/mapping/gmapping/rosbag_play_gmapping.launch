@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="mount_raspicat_slam" default="true"/>
+  <arg name="launch_file" default="$(find raspicat_slam)"/>
+
+  <node pkg="raspicat_rosbag" type="raspicat_rosbag_gmapping_docker_run.sh" name="raspicat_rosbag_gmapping_docker_run.sh" args="$(arg launch_file)" output="screen"/>
+</launch>
