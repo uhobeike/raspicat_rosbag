@@ -1,5 +1,7 @@
 #!/bin/bash -xve
 
+bash $2/download_rosbag.sh
+
 xhost +local:docker && \
 docker run -it --rm --gpus all \
     -v $1:/home/catkin_ws/src/raspicat_slam:rw \

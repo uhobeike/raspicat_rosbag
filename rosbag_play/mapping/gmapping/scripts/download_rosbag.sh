@@ -1,13 +1,15 @@
 #!/bin/bash -xve
 
+mkdir -p $ROSBAG_DIR 
+cd $ROSBAG_DIR
+
 ROSBAG_DIR=~/tsukuba_bag
 FILE_ID=1KuhIFHGd5TuUXpT7oKzMXzhHdzOvfY0v
 FILE_NAME=tsukuba_bag_2021-10-23-14-07.bag
 ROSBAG_FILE_FIND=$(find ~/tsukuba_bag/ -name tsukuba_bag_2021-10-23-14-07.bag)
 ROSBAG_SIZE=$(du -s $ROSBAG_FILE_FIND | awk '{print $1}')
 
-mkdir -p $ROSBAG_DIR 
-cd $ROSBAG_DIR
+
 
 if [[ $ROSBAG_FILE_FIND != $ROSBAG_DIR/$FILE_NAME ]]; then
   curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=${FILE_ID}" > /dev/null
