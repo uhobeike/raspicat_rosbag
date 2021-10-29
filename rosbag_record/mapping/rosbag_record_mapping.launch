@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="ssd" default="true"/>
+  <arg name="ssd_name" default="PortableSSD"/>
 
-  <param if="$(arg ssd)" name="mk_rosbag_dir" command="mkdir -p /media/$(env USER)/PortableSSD/raspicat_rosbag/mapping/"/>
+  <param if="$(arg ssd)" name="mk_rosbag_dir" command="mkdir -p /media/$(env USER)/$(arg ssd_name)/raspicat_rosbag/mapping/"/>
   <param unless="$(arg ssd)" name="mk_rosbag_dir" command="mkdir -p /home/$(env USER)/raspicat_rosbag/mapping/"/>
   
   <node if="$(arg ssd)" pkg="rosbag" type="record" name="rosbag_record_navigation" output="screen"
