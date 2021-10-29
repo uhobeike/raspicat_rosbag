@@ -1,11 +1,12 @@
 #!/bin/bash -xve
 
-mkdir -p $ROSBAG_DIR 
-cd $ROSBAG_DIR
-
 ROSBAG_DIR=~/tsukuba_bag
 FILE_ID=1KuhIFHGd5TuUXpT7oKzMXzhHdzOvfY0v
 FILE_NAME=tsukuba_bag_2021-10-23-14-07.bag
+
+mkdir -p $ROSBAG_DIR 
+cd $ROSBAG_DIR
+
 ROSBAG_FILE_FIND=$(find ~/tsukuba_bag/ -name tsukuba_bag_2021-10-23-14-07.bag)
 ROSBAG_SIZE=$(du -s $ROSBAG_FILE_FIND | awk '{print $1}')
 
