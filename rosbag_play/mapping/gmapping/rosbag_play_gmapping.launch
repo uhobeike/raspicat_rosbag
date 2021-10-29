@@ -4,8 +4,8 @@
   <arg name="raspicat_slam_pkg_dir" default="$(find raspicat_slam)"/>
   <arg name="raspicat_rosbag_pkg_dir" default="$(find raspicat_rosbag)/rosbag_play/mapping/gmapping"/>
 
-  <node pkg="raspicat_rosbag" type="download_rosbag.sh" name="download_rosbag.sh" 
+  <node pkg="raspicat_rosbag" name="download_rosbag" type="download_rosbag.sh" 
     output="screen"/>
-  <node pkg="raspicat_rosbag" type="raspicat_rosbag_gmapping_docker_run.sh" name="raspicat_rosbag_gmapping_docker_run.sh" 
+  <node pkg="raspicat_rosbag" name="raspicat_rosbag_gmapping_docker_run" type="raspicat_rosbag_gmapping_docker_run.sh"
     args="$(arg raspicat_slam_pkg_dir) $(arg raspicat_rosbag_pkg_dir) $(arg rosbag_play_speed)" output="screen"/>
 </launch>
