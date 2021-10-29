@@ -8,27 +8,32 @@ ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPA
 ENV ROS_MASTER_URI=http://localhost:11311 \
   ROS_HOSTNAME=localhost
 
+ENV BASH_ENV "/root/.bashrc"
+
 RUN apt update && apt upgrade -y && \ 
   apt install -y \
   xvfb \
   psmisc \
   python3-pip \
+  ros-melodic-map-server \
   # Install ROS related
   python-catkin-tools && \
   pip3 install rospkg catkin_pkg
 
 RUN mkdir -p /home/catkin_ws/src \
-  && echo "source /opt/ros/melodic/setup.bash" >> /home/.bashrc \
-  && echo "source /home/catkin_ws/devel/setup.bash" >> /home/.bashrc
+  && echo "source /opt/ros/melodic/setup.bash" >> /root/.bashrc \
+  && echo "source /home/catkin_ws/devel/setup.bash" >> /root/.bashrc
 
 RUN cd /home/catkin_ws/src && \
-  git clone https://github.com/uhobeike/raspicat_slam.git
+  git clone https://github.com/CIT-Autonomous-Robot-Lab/raspicat_slam.git
 
 RUN source /opt/ros/melodic/setup.bash && \
   cd /home/catkin_ws && rosdep install -r -y --from-paths --ignore-src . && \
   catkin build
 
 WORKDIR /home/catkin_ws/src/raspicat_slam
+
+COPY ./scripts/run_gmapping.sh /
 
 # How to local build
 # docker build --no-cache -t ubeike/raspicat-ros-melodic-rosbag-gmapping -f Dockerfile.gmapping .
