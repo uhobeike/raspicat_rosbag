@@ -1,11 +1,9 @@
-#!/bin/bash -xve
+#!/bin/bash -e
 
-bash $2/download_rosbag.sh
-
-xhost +local:docker && \
+xhost +local:docker
 docker run -it --rm --gpus all \
-    -v $1:/home/catkin_ws/src/raspicat_slam:rw \
-    -v $HOME/tsukuba_bag/:/home/tsukuba_bag:rw \
+    -v $2:/home/catkin_ws/src/raspicat_slam:rw \
+    -v $HOME/raspicat_rosbag_store/:/home/raspicat_rosbag_store:rw \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -e DISPLAY=$DISPLAY \
     -e QT_X11_NO_MITSHM=1 \
@@ -14,7 +12,7 @@ docker run -it --rm --gpus all \
     --net=host \
     --name raspicat_gmapping \
 ubeike/raspicat-ros-melodic-rosbag-gmapping /bin/bash -i -c \
-    "bash /run_gmapping.sh $3" && \
+    "bash /run_gmapping.sh ${FILE_NAME[$3]} $4"
 xhost -local:docker
 
 killall -9 rosmaster
