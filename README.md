@@ -8,7 +8,7 @@
 
 * rosbagがダウンロード済みの場合は再ダウンロードは行われません。
 
-* ~/tsukuba_bag以下に圧縮済みrosbagがダウンロードされ解凍されます。
+* ~/raspicat_rosbag_store以下に圧縮済みrosbagがダウンロードされ解凍されます。
 
 # How to use
 
