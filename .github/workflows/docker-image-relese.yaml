@@ -24,7 +24,7 @@ jobs:
 
       - name: Build :latest
         if: success()
-        run: ddocker build -t ubeike/raspicat-ros-melodic-rosbag-gmapping:latest -f ./rosbag_play/mapping/gmapping/Dockerfile.gmapping ./rosbag_play/mapping/gmapping/
+        run: docker build -t ubeike/raspicat-ros-melodic-rosbag-gmapping:latest -f ./rosbag_play/mapping/gmapping/Dockerfile.gmapping ./rosbag_play/mapping/gmapping/
 
       - name: Deploy :latest
         if: success()
