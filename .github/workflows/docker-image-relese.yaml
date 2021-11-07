@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  # release:
+  #   types:
+  #     - published
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+    - '**.md'
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: actions-hub/docker/login@master
+        env:
+          DOCKER_USERNAME: ${{ secrets.ubeikeE }}
+          DOCKER_PASSWORD: ${{ secrets.d890dfcb-3688-4f62-8e26-d03325b0154b }}
+          DOCKER_REGISTRY_URL: docker.io
+
+      - name: Build :latest
+        if: success()
+        run: docker build -t ubeike/raspicat-ros-melodic-rosbag-gmapping:latest -f Dockerfile.gmapping ./rosbag_play/mapping/gmapping/
+
+      - name: Deploy :latest
+        if: success()
+        uses: actions-hub/docker@master
+        with:
+          args: push ubeike/raspicat-ros-melodic-rosbag-gmapping:latest
