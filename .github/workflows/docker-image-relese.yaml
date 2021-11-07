@@ -9,18 +9,17 @@ on:
       - master
     paths-ignore:
     - '**.md'
+
+env:
+  DOCKER-IMAGE: ubeike/raspicat-ros-melodic-rosbag-gmapping
+  DOCKER-CONTEXT: ./rosbag_play/mapping/gmapping/
+  DOCKER-FILE: ./rosbag_play/mapping/gmapping/Dockerfile.gmapping
+
 jobs:
   push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-
-      # - name: Login to Docker Hub
-      #   uses: actions-hub/docker/login@master
-      #   env:
-      #     DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      #     DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      #     DOCKER_REGISTRY_URL: docker.io
 
       - name: Set up Docker Buildx
         id: buildx
@@ -46,10 +45,10 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ./rosbag_play/mapping/gmapping/
-          file: ./rosbag_play/mapping/gmapping/Dockerfile.gmapping
+          context: ${{ env.DOCKER-CONTEXT }}
+          file: ${{ DOCKER-FILE }}
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ubeike/raspicat-ros-melodic-rosbag-gmapping
+          tags: ${{ env.DOCKER-IMAGE }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
