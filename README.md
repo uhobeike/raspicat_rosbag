@@ -1,5 +1,7 @@
 # raspicat_rosbag
 
+[![docker-image-relese](https://github.com/uhobeike/raspicat_rosbag/actions/workflows/docker-image-relese.yaml/badge.svg)](https://github.com/uhobeike/raspicat_rosbag/actions/workflows/docker-image-relese.yaml)
+
 # Overview explanation
 
 ## raspicat_rosbag/rosbag_play/gmapping
