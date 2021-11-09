@@ -2,19 +2,19 @@
 
 . $1/download_list.sh
 
-job=0
-all_job=${#FILE_ID[@]}
-echo $all_job
+JOB=0
+ALL_JOB=${#FILE_ID[@]}
+echo $ALL_JOB
 
 (
 echo "# Scan download list..."; sleep 1
 . $1/download_list.sh
-echo $((100*++job/all_job)) ; wait
+echo $((100*++JOB/ALL_JOB)) ; wait
 sleep 1
 
 echo "# Download & Check rosbag..." 
 . $1/download_rosbag.sh
-echo $((100*++job/all_job-1)) ; wait
+echo $((100*++JOB/ALL_JOB-1)) ; wait
 sleep 0.5
 
 echo "# docker run!"; sleep 1

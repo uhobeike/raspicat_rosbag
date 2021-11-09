@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+docker pull ubeike/raspicat-ros-melodic-rosbag-gmapping
+
 xhost +local:docker
 docker run -it --rm --gpus all \
     -v $2:/home/catkin_ws/src/raspicat_slam:rw \
