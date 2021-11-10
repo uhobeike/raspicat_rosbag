@@ -5,6 +5,6 @@
 source /root/.bashrc
 rosparam set /use_sim_time true
 rosrun map_server map_server $(find /home -name $1)&
-roslaunch raspicat_navigation amcl.launch&
+rosrun rviz rviz -d $(find /home -name $4)&
 rosbag play $(find /home -name $2) --clock --topics /tf /tf_static /scan /odom -r $3&
-rosrun rviz rviz -d $(find /home -name $4)
+roslaunch raspicat_navigation amcl.launch
