@@ -3,7 +3,7 @@
 . $1/download_list.sh
 
 JOB=0
-ALL_JOB=${#FILE_ID[@]}
+ALL_JOB=2
 
 (
 echo "# Scan download list..."; sleep 1
