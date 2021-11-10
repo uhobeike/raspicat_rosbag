@@ -17,4 +17,6 @@ ubeike/raspicat-ros-melodic-rosbag-gmapping /bin/bash -i -c \
     "bash /run_gmapping.sh ${FILE_NAME[$4]} $5"
 xhost -local:docker
 
+. $2/move_map_file_navigation_dir.sh $6
+
 killall -9 rosmaster

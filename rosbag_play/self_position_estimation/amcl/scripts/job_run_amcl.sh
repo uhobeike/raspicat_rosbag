@@ -4,7 +4,6 @@
 
 JOB=0
 ALL_JOB=${#FILE_ID[@]}
-echo $ALL_JOB
 
 (
 echo "# Scan download list..."; sleep 1
