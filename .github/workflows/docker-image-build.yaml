@@ -1,4 +1,4 @@
-name: docker-image-relese
+name: docker-image-build
 
 on:
   pull_request:
@@ -36,7 +36,7 @@ jobs:
             ${{ github.ref }}
             refs/head/main
       
-      - name: Build and push gmapping
+      - name: Build gmapping
         id: docker_build_gmapping
         uses: docker/build-push-action@v2
         with:
@@ -48,7 +48,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
           
-      - name: Build and push amcl
+      - name: Build amcl
         id: docker_build_amcl
         uses: docker/build-push-action@v2
         with:
