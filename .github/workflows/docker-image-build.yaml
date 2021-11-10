@@ -1,4 +1,4 @@
-name: docker-image-relese
+name: docker-image-build
 
 on:
   pull_request:
