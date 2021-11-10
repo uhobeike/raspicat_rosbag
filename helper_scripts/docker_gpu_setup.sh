@@ -12,4 +12,4 @@ sudo apt-get install nvidia-container-runtime
 
 service docker restart
 
-printf '\033[42m%s\033[m→  %s\n' 'SUCCEED' "$0" 
+printf '\033[42m%s\033[m→  %s\n' 'SUCCEED' "$(basename $0)" 

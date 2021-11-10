@@ -15,7 +15,7 @@ if [ $(groups $USER | grep -i -o $USER | wc -l) != 2 ]; then
   case $ANS in
     "" | [Yy]* )
       echo "再起動します"
-      printf '\033[42m%s\033[m→  %s\n' 'SUCCEED' "$0"
+      printf '\033[42m%s\033[m→  %s\n' 'SUCCEED' "$(basename $0)"
       sleep 1
       sudo reboot
       ;;
@@ -25,4 +25,4 @@ if [ $(groups $USER | grep -i -o $USER | wc -l) != 2 ]; then
   esac
 fi
 
-printf '\033[42m%s\033[m→  %s\n' 'SUCCEED' "$0"
+printf '\033[42m%s\033[m→  %s\n' 'SUCCEED' "$(basename $0)"
