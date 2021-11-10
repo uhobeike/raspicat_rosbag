@@ -1,10 +1,12 @@
 # raspicat_rosbag
 
+[![docker-image-relese](https://github.com/uhobeike/raspicat_rosbag/actions/workflows/docker-image-relese.yaml/badge.svg)](https://github.com/uhobeike/raspicat_rosbag/actions/workflows/docker-image-relese.yaml)
+
 # Overview explanation
 
 ## raspicat_rosbag/rosbag_play/gmapping
 
-* [こちらのgoogleドライブ](https://drive.google.com/file/d/1KuhIFHGd5TuUXpT7oKzMXzhHdzOvfY0v/view?usp=sharing)からrosbagをダウンロードしgmappingを実行しパラメータ調整を行うためのパッケージです。
+* [こちらのgoogleドライブ](https://drive.google.com/drive/folders/10M9LNWEwlFVunHTv-vx0vhNK5xqopGc_?usp=sharing)からrosbagをダウンロードしgmappingを実行しパラメータ調整を行うためのパッケージです。
 
 * rosbagがダウンロード済みの場合は再ダウンロードは行われません。
 
@@ -34,6 +36,7 @@ roslaunch raspicat_rosbag rosbag_play_gmapping.launch rosbag_play_speed:=1.0
 docker exec -i -t raspicat_gmapping bash
 cd maps
 rosrun map_server map_saver -f map
+↑(raspicat_rosbag_ws/src/raspicat_slam/maps/下に保存されます。)
 ```
 
 ## How to deal with error

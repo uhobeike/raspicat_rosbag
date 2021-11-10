@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Arguments -->
+  <arg name="rosbag_play_file_number" default="0"/>
+  <arg name="rosbag_play_speed" default="1"/>
+  <arg name="raspicat_navigation_pkg_dir" default="$(find raspicat_navigation)"/>
+  <arg name="raspicat_rosbag_download_pkg_dir" default="$(find raspicat_rosbag)rosbag_download/scripts"/>
+  <arg name="raspicat_rosbag_amcl_pkg_dir" default="$(find raspicat_rosbag)/rosbag_play/self_position_estimation/amcl/scripts"/>
+  <arg name="map_file" default="map.yaml"/>
+  <arg name="rviz_config" default="raspicat_navigation_3d.rviz"/>
+
+  <!-- Node launch -->
+  <node pkg="raspicat_rosbag" name="raspicat_rosbag_amcl_docker" type="job_run_amcl.sh"
+    args="$(arg raspicat_rosbag_download_pkg_dir) $(arg raspicat_rosbag_amcl_pkg_dir) $(arg raspicat_navigation_pkg_dir)
+          $(arg map_file) $(arg rosbag_play_file_number) $(arg rosbag_play_speed) $(arg rviz_config)"
+    output="screen"/>
+</launch>

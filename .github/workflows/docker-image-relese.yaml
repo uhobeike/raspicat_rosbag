@@ -1,0 +1,65 @@
+name: docker-image-relese
+
+on:
+  release:
+    types:
+      - published
+
+env:
+  DOCKER-IMAGE-GMAPPING: ubeike/raspicat-ros-melodic-rosbag-gmapping
+  DOCKER-CONTEXT-GMAPPING: ./rosbag_play/mapping/gmapping/
+  DOCKER-FILE-GMAPPING: ./rosbag_play/mapping/gmapping/Dockerfile.gmapping
+
+  DOCKER-IMAGE-AMCL: ubeike/raspicat-ros-melodic-rosbag-amcl
+  DOCKER-CONTEXT-AMCL: ./rosbag_play/self_position_estimation/amcl/
+  DOCKER-FILE-AMCL: ./rosbag_play/self_position_estimation/amcl/Dockerfile.amcl
+
+jobs:
+  push:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            ${{ github.ref }}-${{ github.sha }}
+            ${{ github.ref }}
+            refs/head/main
+      
+      - name: Build and push gmapping
+        id: docker_build_gmapping
+        uses: docker/build-push-action@v2
+        with:
+          context: ${{ env.DOCKER-CONTEXT-GMAPPING }}
+          file: ${{ env.DOCKER-FILE-GMAPPING }}
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags: ${{ env.DOCKER-IMAGE-GMAPPING }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+          
+      - name: Build and push amcl
+        id: docker_build_amcl
+        uses: docker/build-push-action@v2
+        with:
+          context: ${{ env.DOCKER-CONTEXT-AMCL }}
+          file: ${{ env.DOCKER-FILE-AMCL }}
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags: ${{ env.DOCKER-IMAGE-AMCL }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
