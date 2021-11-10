@@ -47,6 +47,17 @@ roslaunch raspicat_rosbag rosbag_play_amcl.launch rosbag_play_file_number:=2 ros
 
 [`raspicat_navigation/launch/amcl.launch`](https://github.com/CIT-Autonomous-Robot-Lab/raspicat_navigation/blob/master/launch/amcl.launch)
 
+## raspicat_rosbag/rosbag_play/emcl
+
+* 1stターミナル(システムの起動方法)
+```
+roslaunch raspicat_rosbag rosbag_play_emcl.launch rosbag_play_file_number:=2 rosbag_play_speed:=1.0 map_file:=map.yaml
+```
+
+* 調整するパラメータファイル
+
+[`raspicat_navigation/launch/emcl.launch`](https://github.com/CIT-Autonomous-Robot-Lab/raspicat_navigation/blob/master/launch/emcl.launch)
+
 ## How to deal with error
 
 * [以下のエラーが出た時の対策方法](https://github.com/uhobeike/raspicat_rosbag/issues/8)
