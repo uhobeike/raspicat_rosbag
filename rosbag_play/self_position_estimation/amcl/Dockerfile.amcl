@@ -25,15 +25,15 @@ RUN mkdir -p /home/catkin_ws/src \
   && echo "source /home/catkin_ws/devel/setup.bash" >> /root/.bashrc
 
 RUN cd /home/catkin_ws/src && \
-  git clone https://github.com/CIT-Autonomous-Robot-Lab/raspicat_slam.git
+  git clone https://github.com/uhobeike/raspicat_navigation.git
 
 RUN source /opt/ros/melodic/setup.bash && \
   cd /home/catkin_ws && rosdep install -r -y --from-paths --ignore-src . && \
   catkin build
 
-WORKDIR /home/catkin_ws/src/raspicat_slam
+WORKDIR /home/catkin_ws/src/raspicat_navigation
 
-COPY ./scripts/run_gmapping.sh /
+COPY ./scripts/run_amcl.sh /
 
 # How to local build
-# docker build --no-cache -t ubeike/raspicat-ros-melodic-rosbag-gmapping -f Dockerfile.gmapping .
+# docker build --no-cache -t ubeike/raspicat-ros-melodic-rosbag-amcl -f Dockerfile.amcl .
