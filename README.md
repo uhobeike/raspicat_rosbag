@@ -22,22 +22,30 @@ dockerを用いてマッピングや自己位置推定を実行することで�
 
 * 1stターミナル(システムの起動方法)
 ```
-roslaunch raspicat_rosbag rosbag_play_gmapping.launch rosbag_play_file_number:=0 rosbag_play_speed:=1.0 save_map_to_raspicat_navigation:=true
+roslaunch raspicat_rosbag rosbag_play_gmapping.launch rosbag_play_file_number:=3 rosbag_play_speed:=1.0 save_map_to_raspicat_navigation:=true
 ```
-👆(`save_map_to_raspicat_navigation:=true`にすることでroslaunch終了前にraspicat_slam/maps/にあるマップデータがraspicat_navigation/config/maps/コピーされます。)
-(rosbag_play_file_number:=0は[ここに列挙されている配列のインデックス](https://github.com/uhobeike/raspicat_rosbag/blob/master/rosbag_download/scripts/download_list.sh)です。)
+👆(`save_map_to_raspicat_navigation:=true`にすることでroslaunch終了前にraspicat_slam/maps/にあるマップデータがraspicat_navigation/config/maps/コピーされます。rosbag_play_file_number:=0は[ここに列挙されている配列のインデックス](https://github.com/uhobeike/raspicat_rosbag/blob/master/rosbag_download/scripts/download_list.sh)です。)
 * 2ndターミナル(マウント元にmapを保存する方法)
 ```
- docker exec -i -t raspicat_gmapping bash -c "cd maps;bash"
+docker exec -i -t raspicat_gmapping bash -c "cd maps;bash"
 rosrun map_server map_saver -f map
 ```
 👆(raspicat_rosbag_ws/src/raspicat_slam/maps/下に保存されます。)
+
+* 調整するパラメータファイル
+
+[`raspicat_slam/launch/slam_remote_pc.launch`](https://github.com/CIT-Autonomous-Robot-Lab/raspicat_slam/blob/master/launch/slam_remote_pc.launch)
+
 ## raspicat_rosbag/rosbag_play/amcl
 
 * 1stターミナル(システムの起動方法)
 ```
-roslaunch raspicat_rosbag rosbag_play_amcl.launch rosbag_play_file_number:=0 rosbag_play_speed:=1.0 map_file:=map.yaml
+roslaunch raspicat_rosbag rosbag_play_amcl.launch rosbag_play_file_number:=2 rosbag_play_speed:=1.0 map_file:=map.yaml
 ```
+
+* 調整するパラメータファイル
+
+[`raspicat_navigation/launch/amcl.launch`](https://github.com/CIT-Autonomous-Robot-Lab/raspicat_navigation/blob/master/launch/amcl.launch)
 
 ## How to deal with error
 
