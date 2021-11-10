@@ -17,7 +17,7 @@ env:
 
   DOCKER-IMAGE-AMCL: ubeike/raspicat-ros-melodic-rosbag-amcl
   DOCKER-CONTEXT-AMCL: ./rosbag_play/self_position_estimation/amcl/
-  DOCKER-FILE-AMCL: ./rosbag_play/self_position_estimation/amcl/Dockerfile.gmapping
+  DOCKER-FILE-AMCL: ./rosbag_play/self_position_estimation/amcl/Dockerfile.amcl
 
 jobs:
   push:
