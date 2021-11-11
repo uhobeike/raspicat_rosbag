@@ -26,7 +26,7 @@ RUN mkdir -p /home/catkin_ws/src \
 
 RUN cd /home/catkin_ws/src && \
   git clone https://github.com/uhobeike/raspicat_navigation.git && \
-  svn export https://github.com/NaokiAkai/mcl_ros/trunk/src/mcl_ros
+  svn export https://github.com/CIT-Autonomous-Robot-Lab/mcl_ros/trunk/src/mcl_ros
 
 RUN source /opt/ros/melodic/setup.bash && \
   cd /home/catkin_ws && rosdep install -r -y --from-paths --ignore-src . && \
