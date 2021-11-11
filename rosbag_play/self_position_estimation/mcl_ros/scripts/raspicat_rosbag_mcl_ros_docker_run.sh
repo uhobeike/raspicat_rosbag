@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-# docker pull ubeike/raspicat-ros-melodic-rosbag-mcl_ros
+docker pull ubeike/raspicat-ros-melodic-rosbag-mcl_ros
 
 xhost +local:docker
 docker run -it --rm --gpus all \
