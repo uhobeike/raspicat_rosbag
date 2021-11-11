@@ -20,7 +20,7 @@ env:
 
   DOCKER-IMAGE-MCL_ROS: ubeike/raspicat-ros-melodic-rosbag-mcl_ros
   DOCKER-CONTEXT-MCL_ROS: ./rosbag_play/self_position_estimation/mcl_ros/
-  DOCKER-FILE-MCL_ROS: ./rosbag_play/self_position_estimation/emcl/Dockerfile.mcl_ros
+  DOCKER-FILE-MCL_ROS: ./rosbag_play/self_position_estimation/mcl_ros/Dockerfile.mcl_ros
 
 jobs:
   push:
