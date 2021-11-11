@@ -1,0 +1,40 @@
+FROM osrf/ros:melodic-desktop-full
+
+SHELL ["/bin/bash", "-c"]
+
+ENV NVIDIA_VISIBLE_DEVICES ${NVIDIA_VISIBLE_DEVICES:-all}
+ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics
+
+ENV ROS_MASTER_URI=http://localhost:11311 \
+  ROS_HOSTNAME=localhost
+
+ENV BASH_ENV "/root/.bashrc"
+
+RUN apt update && apt upgrade -y && \ 
+  apt install -y \
+  xvfb \
+  psmisc \
+  python3-pip \
+  ros-melodic-map-server \
+  # Install ROS related
+  python-catkin-tools && \
+  pip3 install rospkg catkin_pkg
+
+RUN mkdir -p /home/catkin_ws/src \
+  && echo "source /opt/ros/melodic/setup.bash" >> /root/.bashrc \
+  && echo "source /home/catkin_ws/devel/setup.bash" >> /root/.bashrc
+
+RUN cd /home/catkin_ws/src && \
+  git clone https://github.com/uhobeike/raspicat_navigation.git && \
+  svn export https://github.com/NaokiAkai/mcl_ros/trunk/src/mcl_ros
+
+RUN source /opt/ros/melodic/setup.bash && \
+  cd /home/catkin_ws && rosdep install -r -y --from-paths --ignore-src . && \
+  catkin build
+
+WORKDIR /home/catkin_ws/src/raspicat_navigation
+
+COPY ./scripts/run_mcl_ros.sh /
+
+# How to local build
+# docker build --no-cache -t ubeike/raspicat-ros-melodic-rosbag-mcl_ros -f Dockerfile.mcl_ros .

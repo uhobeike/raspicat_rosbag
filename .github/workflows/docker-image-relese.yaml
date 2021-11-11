@@ -18,6 +18,10 @@ env:
   DOCKER-CONTEXT-EMCL: ./rosbag_play/self_position_estimation/emcl/
   DOCKER-FILE-EMCL: ./rosbag_play/self_position_estimation/emcl/Dockerfile.emcl
 
+  DOCKER-IMAGE-MCL_ROS: ubeike/raspicat-ros-melodic-rosbag-mcl_ros
+  DOCKER-CONTEXT-MCL_ROS: ./rosbag_play/self_position_estimation/mcl_ros/
+  DOCKER-FILE-MCL_ROS: ./rosbag_play/self_position_estimation/emcl/Dockerfile.mcl_ros
+
 jobs:
   push:
     runs-on: ubuntu-18.04
@@ -77,5 +81,17 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ env.DOCKER-IMAGE-EMCL }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+
+      - name: Build mcl_ros
+        id: docker_build_mcl_ros
+        uses: docker/build-push-action@v2
+        with:
+          context: ${{ env.DOCKER-CONTEXT-MCL_ROS }}
+          file: ${{ env.DOCKER-FILE-MCL_ROS }}
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags: ${{ env.DOCKER-IMAGE-MCL_ROS }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
