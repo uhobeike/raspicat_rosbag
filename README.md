@@ -13,7 +13,7 @@ dockerを用いてマッピングや自己位置推定を実行することで�
 
 ## 環境構築
 
-* 以下のスクリプトを実行
+* [以下のスクリプトを実行](https://github.com/uhobeike/raspicat_rosbag/blob/master/helper_scripts/environment_setting.sh)
 ```
 ./helper_scripts/environment_setting.sh
 ```
@@ -40,7 +40,7 @@ rosrun map_server map_saver -f map
 
 * 1stターミナル(システムの起動方法)
 ```
-roslaunch raspicat_rosbag rosbag_play_amcl.launch rosbag_play_file_number:=2 rosbag_play_speed:=1.0 map_file:=map.yaml
+roslaunch raspicat_rosbag rosbag_play_amcl.launch rosbag_play_file_number:=4 rosbag_play_speed:=1.0 map_file:=map.yaml
 ```
 
 * 調整するパラメータファイル
@@ -51,12 +51,23 @@ roslaunch raspicat_rosbag rosbag_play_amcl.launch rosbag_play_file_number:=2 ros
 
 * 1stターミナル(システムの起動方法)
 ```
-roslaunch raspicat_rosbag rosbag_play_emcl.launch rosbag_play_file_number:=2 rosbag_play_speed:=1.0 map_file:=map.yaml
+roslaunch raspicat_rosbag rosbag_play_emcl.launch rosbag_play_file_number:=4 rosbag_play_speed:=1.0 map_file:=map.yaml
 ```
 
 * 調整するパラメータファイル
 
 [`raspicat_navigation/launch/emcl.launch`](https://github.com/CIT-Autonomous-Robot-Lab/raspicat_navigation/blob/master/launch/emcl.launch)
+
+## raspicat_rosbag/rosbag_play/mcl_ros
+
+* 1stターミナル(システムの起動方法)
+```
+roslaunch raspicat_rosbag rosbag_play_mcl_ros.launch rosbag_play_file_number:=4 rosbag_play_speed:=1.0 map_file:=map.yaml
+```
+
+* 調整するパラメータファイル
+
+[`raspicat_navigation/launch/mcl_ros.launch`](https://github.com/CIT-Autonomous-Robot-Lab/raspicat_navigation/blob/master/launch/mcl_ros.launch)
 
 ## How to deal with error
 
