@@ -20,4 +20,17 @@ FILE_NAME[3]=2021-11-07-11_good_mapping.bag
 #https://drive.google.com/file/d/1OiXY3UqdZlg3iOH_a4jgrFsShb739RhA/view?usp=sharing
 FILE_ID[4]=1OiXY3UqdZlg3iOH_a4jgrFsShb739RhA
 FILE_NAME[4]=2021-11-07-15_following_main_course.bag
+
+#https://drive.google.com/file/d/1GqIPSFHpxTTHcDeF2Zfa0WIF6zfNY-Uq/view?usp=sharing
+FILE_ID[5]=1GqIPSFHpxTTHcDeF2Zfa0WIF6zfNY-Uq
+FILE_NAME[5]=2021-11-21_singo_morning.bag
+
+#https://drive.google.com/file/d/1Tjad9MAgBYMI-FBOUNz_xC36p0IfXjid/view?usp=sharing
+FILE_ID[6]=1Tjad9MAgBYMI-FBOUNz_xC36p0IfXjid
+FILE_NAME[6]=2021-11-21_singo_performance.bag
+
+#https://drive.google.com/file/d/1Hr79UQO6DVGtTP6wTC2Oe5F1qIWa5OZy/view?usp=sharing
+FILE_ID[7]=1Hr79UQO6DVGtTP6wTC2Oe5F1qIWa5OZy
+FILE_NAME[7]=2021-11-21_park.bag
+
 #################################################
