@@ -8,10 +8,11 @@
   <arg name="raspicat_rosbag_amcl_pkg_dir" default="$(find raspicat_rosbag)/rosbag_play/self_position_estimation/amcl/scripts"/>
   <arg name="map_file" default="map.yaml"/>
   <arg name="rviz_config" default="raspicat_navigation_3d.rviz"/>
+  <arg name="rosbag_download_skip" default="false"/>
 
   <!-- Node launch -->
   <node pkg="raspicat_rosbag" name="raspicat_rosbag_amcl_docker" type="job_run_amcl.sh"
     args="$(arg raspicat_rosbag_download_pkg_dir) $(arg raspicat_rosbag_amcl_pkg_dir) $(arg raspicat_navigation_pkg_dir)
-          $(arg map_file) $(arg rosbag_play_file_number) $(arg rosbag_play_speed) $(arg rviz_config)"
+          $(arg map_file) $(arg rosbag_play_file_number) $(arg rosbag_play_speed) $(arg rviz_config) $(arg rosbag_download_skip)"
     output="screen"/>
 </launch>

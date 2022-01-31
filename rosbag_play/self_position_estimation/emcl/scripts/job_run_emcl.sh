@@ -12,7 +12,9 @@ echo $((100*++JOB/ALL_JOB)) ; wait
 sleep 1
 
 echo "# Download & Check rosbag..." 
-. $1/download_rosbag.sh
+if ! $8 ; then
+  . $1/download_rosbag.sh
+fi
 echo $((100*++JOB/ALL_JOB-1)) ; wait
 sleep 0.5
 
