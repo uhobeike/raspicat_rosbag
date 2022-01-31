@@ -25,7 +25,7 @@ env:
   DOCKER-FILE-MCL_ROS: ./rosbag_play/self_position_estimation/mcl_ros/Dockerfile.mcl_ros
 
 jobs:
-  build:
+  docker-build:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
