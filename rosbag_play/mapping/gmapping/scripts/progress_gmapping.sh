@@ -28,4 +28,4 @@ zenity --progress \
   --width=1000 \
   --auto-close
 
-. $2/raspicat_rosbag_gmapping_docker_run.sh
+. $2/gmapping_docker_run.sh
