@@ -33,7 +33,10 @@ RUN source /opt/ros/melodic/setup.bash && \
 
 WORKDIR /home/catkin_ws/src/raspicat_slam
 
-COPY ./scripts/run_gmapping.sh /
+COPY ./rosbag_play/mapping/gmapping/scripts/run_gmapping.sh /
+COPY ./rosbag_play/mapping/gmapping/scripts/run_gmapping_exec.sh /home/catkin_ws/src
+COPY ./rosbag_download/scripts/download_list.sh /home/catkin_ws/src
 
 # How to local build
-# docker build --no-cache -t ubeike/raspicat-ros-melodic-rosbag-gmapping -f Dockerfile.gmapping .
+# roscd raspicat_rosbag && docker build -t ubeike/raspicat-ros-melodic-rosbag-gmapping -f $(rospack find raspicat_rosbag)/rosbag_play/mapping/gmapping/Dockerfile.gmapping .
+# roscd raspicat_rosbag && docker build --no-cache -t ubeike/raspicat-ros-melodic-rosbag-gmapping -f $(rospack find rosbag)/rosbag_play/mapping/gmapping/Dockerfile.gmapping .
