@@ -1,5 +1,5 @@
 # raspicat_rosbag
-
+[![docker-image-build](https://github.com/uhobeike/raspicat_rosbag/actions/workflows/docker-image-build.yaml/badge.svg)](https://github.com/uhobeike/raspicat_rosbag/actions/workflows/docker-image-build.yaml)
 [![docker-image-relese](https://github.com/uhobeike/raspicat_rosbag/actions/workflows/docker-image-relese.yaml/badge.svg)](https://github.com/uhobeike/raspicat_rosbag/actions/workflows/docker-image-relese.yaml)
 
 * [こちらのgoogleドライブ](https://drive.google.com/drive/folders/10M9LNWEwlFVunHTv-vx0vhNK5xqopGc_?usp=sharing)からrosbagをダウンロードし
