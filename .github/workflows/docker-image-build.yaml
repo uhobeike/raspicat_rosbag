@@ -9,7 +9,7 @@ on:
 
 env:
   DOCKER-IMAGE-GMAPPING: ubeike/raspicat-ros-melodic-rosbag-gmapping
-  DOCKER-CONTEXT-GMAPPING: ./rosbag_play/mapping/gmapping/
+  DOCKER-CONTEXT-GMAPPING: ./
   DOCKER-FILE-GMAPPING: ./rosbag_play/mapping/gmapping/Dockerfile.gmapping
 
   DOCKER-IMAGE-AMCL: ubeike/raspicat-ros-melodic-rosbag-amcl
