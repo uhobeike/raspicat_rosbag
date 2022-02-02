@@ -7,20 +7,20 @@ on:
 
 env:
   DOCKER-IMAGE-GMAPPING: ubeike/raspicat-ros-melodic-rosbag-gmapping
-  DOCKER-CONTEXT-GMAPPING: ./rosbag_play/mapping/gmapping/
+  DOCKER-CONTEXT-GMAPPING: ./
   DOCKER-FILE-GMAPPING: ./rosbag_play/mapping/gmapping/Dockerfile.gmapping
 
   DOCKER-IMAGE-AMCL: ubeike/raspicat-ros-melodic-rosbag-amcl
-  DOCKER-CONTEXT-AMCL: ./rosbag_play/self_position_estimation/amcl/
-  DOCKER-FILE-AMCL: ./rosbag_play/self_position_estimation/amcl/Dockerfile.amcl
+  DOCKER-CONTEXT-AMCL: ./
+  DOCKER-FILE-AMCL: ./rosbag_play/localization/amcl/Dockerfile.amcl
 
   DOCKER-IMAGE-EMCL: ubeike/raspicat-ros-melodic-rosbag-emcl
-  DOCKER-CONTEXT-EMCL: ./rosbag_play/self_position_estimation/emcl/
-  DOCKER-FILE-EMCL: ./rosbag_play/self_position_estimation/emcl/Dockerfile.emcl
+  DOCKER-CONTEXT-EMCL: ./
+  DOCKER-FILE-EMCL: ./rosbag_play/localization/emcl/Dockerfile.emcl
 
   DOCKER-IMAGE-MCL_ROS: ubeike/raspicat-ros-melodic-rosbag-mcl_ros
-  DOCKER-CONTEXT-MCL_ROS: ./rosbag_play/self_position_estimation/mcl_ros/
-  DOCKER-FILE-MCL_ROS: ./rosbag_play/self_position_estimation/mcl_ros/Dockerfile.mcl_ros
+  DOCKER-CONTEXT-MCL_ROS: ./
+  DOCKER-FILE-MCL_ROS: ./rosbag_play/localization/mcl_ros/Dockerfile.mcl_ros
 
 jobs:
   docker-build-push:

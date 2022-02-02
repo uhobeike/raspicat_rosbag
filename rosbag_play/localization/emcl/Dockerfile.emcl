@@ -26,7 +26,7 @@ RUN mkdir -p /home/catkin_ws/src \
 
 RUN cd /home/catkin_ws/src && \
   git clone https://github.com/uhobeike/raspicat_navigation.git && \
-  svn export https://github.com/CIT-Autonomous-Robot-Lab/mcl_ros/trunk/src/mcl_ros
+  git clone https://github.com/CIT-Autonomous-Robot-Lab/emcl.git
 
 RUN source /opt/ros/melodic/setup.bash && \
   cd /home/catkin_ws && rosdep install -r -y --from-paths --ignore-src . && \
@@ -34,7 +34,10 @@ RUN source /opt/ros/melodic/setup.bash && \
 
 WORKDIR /home/catkin_ws/src/raspicat_navigation
 
-COPY ./scripts/run_mcl_ros.sh /
+COPY ./rosbag_play/localization/emcl/scripts/run_emcl.sh /
+COPY ./rosbag_play/localization/emcl/scripts/run_emcl_exec.sh /home/catkin_ws/src
+COPY ./rosbag_download/scripts/download_list.sh /home/catkin_ws/src
 
 # How to local build
-# docker build --no-cache -t ubeike/raspicat-ros-melodic-rosbag-mcl_ros -f Dockerfile.mcl_ros .
+# roscd raspicat_rosbag && docker build -t ubeike/raspicat-ros-melodic-rosbag-emcl -f $(rospack find raspicat_rosbag)/rosbag_play/localization/emcl/Dockerfile.emcl .
+# roscd raspicat_rosbag && docker build --no-cache -t ubeike/raspicat-ros-melodic-rosbag-emcl -f $(rospack find raspicat_rosbag)/rosbag_play/localization/emcl/Dockerfile.emcl .

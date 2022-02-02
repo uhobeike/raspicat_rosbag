@@ -22,8 +22,8 @@ echo "# docker run!"; sleep 1
 echo $((100))
 ) |
 zenity --progress \
-  --title="Docker Amcl System Logs" \
+  --title="Docker mcl_ros System Logs" \
   --width=1000 \
   --auto-close
 
-. $2/raspicat_rosbag_amcl_docker_run.sh
+. $2/mcl_ros_docker_run.sh

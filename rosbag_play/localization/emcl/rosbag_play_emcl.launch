@@ -5,14 +5,14 @@
   <arg name="rosbag_play_speed" default="1"/>
   <arg name="raspicat_navigation_pkg_dir" default="$(find raspicat_navigation)"/>
   <arg name="raspicat_rosbag_download_pkg_dir" default="$(find raspicat_rosbag)rosbag_download/scripts"/>
-  <arg name="raspicat_rosbag_mcl_ros_pkg_dir" default="$(find raspicat_rosbag)/rosbag_play/self_position_estimation/mcl_ros/scripts"/>
+  <arg name="raspicat_rosbag_emcl_pkg_dir" default="$(find raspicat_rosbag)/rosbag_play/localization/emcl/scripts"/>
   <arg name="map_file" default="map.yaml"/>
   <arg name="rviz_config" default="raspicat_navigation_3d.rviz"/>
   <arg name="rosbag_download_skip" default="false"/>
 
   <!-- Node launch -->
-  <node pkg="raspicat_rosbag" name="raspicat_rosbag_mcl_ros_docker" type="job_run_mcl_ros.sh"
-    args="$(arg raspicat_rosbag_download_pkg_dir) $(arg raspicat_rosbag_mcl_ros_pkg_dir) $(arg raspicat_navigation_pkg_dir)
+  <node pkg="raspicat_rosbag" name="raspicat_rosbag_emcl_docker" type="progress_emcl.sh"
+    args="$(arg raspicat_rosbag_download_pkg_dir) $(arg raspicat_rosbag_emcl_pkg_dir) $(arg raspicat_navigation_pkg_dir)
           $(arg map_file) $(arg rosbag_play_file_number) $(arg rosbag_play_speed) $(arg rviz_config) $(arg rosbag_download_skip)"
     output="screen"/>
 </launch>
