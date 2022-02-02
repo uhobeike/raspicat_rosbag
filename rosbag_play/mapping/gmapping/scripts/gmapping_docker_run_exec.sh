@@ -2,7 +2,7 @@
 
 xhost +local:docker
 docker run -it --gpus all \
-    -v $3:/home/catkin_ws/src/raspicat_slam:rw \
+    -v $(rospack find raspicat_slam):/home/catkin_ws/src/raspicat_slam:rw \
     -v $HOME/raspicat_rosbag_store/:/home/raspicat_rosbag_store:rw \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -e DISPLAY=$DISPLAY \
