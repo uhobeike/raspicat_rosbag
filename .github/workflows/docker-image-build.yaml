@@ -13,15 +13,15 @@ env:
   DOCKER-FILE-GMAPPING: ./rosbag_play/mapping/gmapping/Dockerfile.gmapping
 
   DOCKER-IMAGE-AMCL: ubeike/raspicat-ros-melodic-rosbag-amcl
-  DOCKER-CONTEXT-AMCL: ./rosbag_play/self_position_estimation/amcl/
+  DOCKER-CONTEXT-AMCL: ./
   DOCKER-FILE-AMCL: ./rosbag_play/self_position_estimation/amcl/Dockerfile.amcl
 
   DOCKER-IMAGE-EMCL: ubeike/raspicat-ros-melodic-rosbag-emcl
-  DOCKER-CONTEXT-EMCL: ./rosbag_play/self_position_estimation/emcl/
+  DOCKER-CONTEXT-EMCL: ./
   DOCKER-FILE-EMCL: ./rosbag_play/self_position_estimation/emcl/Dockerfile.emcl
 
   DOCKER-IMAGE-MCL_ROS: ubeike/raspicat-ros-melodic-rosbag-mcl_ros
-  DOCKER-CONTEXT-MCL_ROS: ./rosbag_play/self_position_estimation/mcl_ros/
+  DOCKER-CONTEXT-MCL_ROS: ./
   DOCKER-FILE-MCL_ROS: ./rosbag_play/self_position_estimation/mcl_ros/Dockerfile.mcl_ros
 
 jobs:
