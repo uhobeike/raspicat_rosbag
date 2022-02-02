@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # This file is copied in the docker.
-# ex) bash run_amcl_exec.sh 3 1 map_tsukuba.yaml raspicat_navigation_3d.rviz
+# ex) bash run_amcl_exec.sh 4 1 map_tsukuba.yaml raspicat_navigation_3d.rviz
 source /root/.bashrc
 . download_list.sh
 roscore&
