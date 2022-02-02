@@ -33,7 +33,10 @@ RUN source /opt/ros/melodic/setup.bash && \
 
 WORKDIR /home/catkin_ws/src/raspicat_navigation
 
-COPY ./scripts/run_amcl.sh /
+COPY ./rosbag_play/localization/amcl/scripts/run_amcl.sh /
+COPY ./rosbag_play/localization/amcl/scripts/run_amcl_exec.sh /home/catkin_ws/src
+COPY ./rosbag_download/scripts/download_list.sh /home/catkin_ws/src
 
 # How to local build
-# docker build --no-cache -t ubeike/raspicat-ros-melodic-rosbag-amcl -f Dockerfile.amcl .
+# roscd raspicat_rosbag && docker build -t ubeike/raspicat-ros-melodic-rosbag-amcl -f $(rospack find raspicat_rosbag)/rosbag_play/localization/amcl/Dockerfile.amcl .
+# roscd raspicat_rosbag && docker build --no-cache -t ubeike/raspicat-ros-melodic-rosbag-amcl -f $(rospack find raspicat_rosbag)/rosbag_play/localization/amcl/Dockerfile.amcl .

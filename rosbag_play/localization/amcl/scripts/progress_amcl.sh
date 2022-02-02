@@ -26,4 +26,4 @@ zenity --progress \
   --width=1000 \
   --auto-close
 
-. $2/raspicat_rosbag_amcl_docker_run.sh
+. $2/amcl_docker_run.sh
